@@ -64,9 +64,9 @@ let vowelBonusScore = function(word) {
 let scrabbleScore = 0;
 
 const scoringAlgorithms = [
-  { name: 'Simple Score', description: 'Each letter is worth 1 point', scorerFunction: simpleScore },
-  { name: 'Bonus Vowels', description: 'Vowels are 3 pts, consonants are 1 pt.', scorerFunction: vowelBonusScore }, 
-  { name: 'Scrabble', description: 'The traditional scoring algorithm', scorerFunction: oldScrabbleScorer}
+  { name: 'Simple Score', description: 'Each letter is worth 1 point', scoringFunction: simpleScore },
+  { name: 'Bonus Vowels', description: 'Vowels are 3 pts, consonants are 1 pt.', scoringFunction: vowelBonusScore }, 
+  { name: 'Scrabble', description: 'The traditional scoring algorithm', scoringFunction: oldScrabbleScorer}
 
 ];
 
@@ -79,22 +79,31 @@ function scorerPrompt(word) {
 
   if (number === '0'){
     console.log("algorithm name: ", scoringAlgorithms[0].name);
-    return `scoreFunction result: ${scoringAlgorithms[0].scorerFunction(word)}`
+    return `scoreFunction result: ${scoringAlgorithms[0].scoringFunction(word)}`
   }
   else if (number === '1'){
     console.log("algorithm name: ", scoringAlgorithms[1].name);
-    return `scorerFunction result: ${scoringAlgorithms[1].scorerFunction(word)}`;
+    return `scoringFunction result: ${scoringAlgorithms[1].scoringFunction(word)}`;
   }
   else if (number === '2'){
       console.log("algorithm name: ", scoringAlgorithms[2].name);
-      return `scorerFunction result: ${scoringAlgorithms[2].scorerFunction(word)}`
+      return `scoringFunction result: ${scoringAlgorithms[2].scoringFunction(word)}`
     }
   }
 
 
-function transform(object) {};
+function transform(oldPointStructure) {
+  let newPointStructure = {}
+  for(pointValue in oldPointStructure){
+    for (let i=0; i<oldPointStructure[pointValue].length; i++){
+      newPointStructure[oldPointStructure[pointValue][i].toLowerCase()] = Number(pointValue)
+    }
+  }
+return newPointStructure
 
+};
 let newPointStructure = transform(oldPointStructure);
+
 
 function runProgram() {
    let word = initialPrompt();

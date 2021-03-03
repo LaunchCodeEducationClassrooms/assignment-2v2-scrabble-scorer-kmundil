@@ -61,7 +61,14 @@ let vowelBonusScore = function(word) {
   return bonusPoints;
 };
 
-let scrabbleScore = 0;
+let scrabbleScore = function(word){
+  word = word.toLowerCase()
+  let newScore = 0;
+  for (i=0; i<word.length; i++) {
+    newScore += newPointStructure[word[i]]
+  }
+  return newScore
+};
 
 const scoringAlgorithms = [
   {name: 'Simple Score', description: 'Each letter is worth 1 point', scoringFunction: simpleScore },

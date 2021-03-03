@@ -64,9 +64,9 @@ let vowelBonusScore = function(word) {
 let scrabbleScore = 0;
 
 const scoringAlgorithms = [
-  { name: 'Simple Score', description: 'Each letter is worth 1 point', scoringFunction: simpleScore },
-  { name: 'Bonus Vowels', description: 'Vowels are 3 pts, consonants are 1 pt.', scoringFunction: vowelBonusScore }, 
-  { name: 'Scrabble', description: 'The traditional scoring algorithm', scoringFunction: oldScrabbleScorer}
+  {name: 'Simple Score', description: 'Each letter is worth 1 point', scoringFunction: simpleScore },
+  {name: 'Bonus Vowels', description: 'Vowels are 3 pts, consonants are 1 pt.', scoringFunction: vowelBonusScore }, 
+  {name: 'Scrabble', description: 'The traditional scoring algorithm', scoringFunction: scrabbleScore}
 
 ];
 
